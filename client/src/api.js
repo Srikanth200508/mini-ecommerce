@@ -1,17 +1,47 @@
 // API client helper using the browser's native Fetch API
-// In Vite dev mode, '/api' is proxied to 'http://127.0.0.1:5050'
-// We also support direct server fallback if needed.
+// Handles production Vercel deployment with Render backend as well as local Vite development.
 
-const API_BASE = window.location.port === '3000' || window.location.port === '5173'
-  ? '' 
-  : 'http://127.0.0.1:5050';
+const PRODUCTION_BACKEND_URL = 'https://mini-ecommerce-714d.onrender.com';
 
 /**
- * Universal fetch wrapper with automatic JSON parsing and error handling
+ * Normalizes the API base URL:
+ * - Uses import.meta.env.VITE_API_URL if defined (e.g. from Vercel environment variables).
+ * - Falls back to PRODUCTION_BACKEND_URL when running in production (import.meta.env.PROD).
+ * - In local dev (import.meta.env.DEV), defaults to empty string '' to leverage Vite dev proxy (/api -> local server).
+ * - Strips any trailing slashes and avoids duplicate '/api' prefixing.
+ */
+function resolveApiBaseUrl() {
+  const envUrl = import.meta.env.VITE_API_URL;
+  const rawUrl = envUrl || (import.meta.env.PROD ? PRODUCTION_BACKEND_URL : '');
+
+  if (!rawUrl || typeof rawUrl !== 'string') {
+    return '';
+  }
+
+  let clean = rawUrl.trim().replace(/\/+$/, '');
+  // If the configured URL ends with /api, strip it so subsequent `/api/...` endpoints don't duplicate
+  if (clean.endsWith('/api')) {
+    clean = clean.slice(0, -4);
+  }
+  return clean;
+}
+
+const API_BASE = resolveApiBaseUrl();
+
+/**
+ * Builds a clean, fully-qualified URL for API requests without duplicate slashes or segments.
+ */
+function buildEndpointUrl(endpoint) {
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  return API_BASE ? `${API_BASE}${cleanEndpoint}` : cleanEndpoint;
+}
+
+/**
+ * Universal fetch wrapper with automatic JSON parsing and robust error handling
  */
 async function request(endpoint, options = {}) {
-  const url = `${API_BASE}${endpoint}`;
-  
+  const url = buildEndpointUrl(endpoint);
+
   const headers = {
     'Content-Type': 'application/json',
     ...options.headers,
@@ -37,9 +67,11 @@ async function request(endpoint, options = {}) {
 
     return data;
   } catch (error) {
-    // If proxy failed or server isn't reachable, provide helpful message
-    if (error.name === 'TypeError' && error.message.includes('fetch')) {
-      throw new Error('Unable to connect to the backend server. Make sure the server is running on port 5000.');
+    // Helpful network / sleep diagnostic for Render free tier & connection drops
+    if (error.name === 'TypeError' && (error.message.includes('fetch') || error.message.includes('Failed to fetch'))) {
+      throw new Error(
+        'Unable to connect to the backend server. If using Render free-tier, it may take 30-50 seconds to spin up from sleep.'
+      );
     }
     throw error;
   }
@@ -52,7 +84,7 @@ export const api = {
     if (params.category && params.category !== 'All') query.append('category', params.category);
     if (params.search) query.append('search', params.search);
     if (params.sort) query.append('sort', params.sort);
-    
+
     const queryString = query.toString();
     return request(`/api/products${queryString ? `?${queryString}` : ''}`);
   },
@@ -89,4 +121,3 @@ export const api = {
 
   getCurrentUser: () => request('/api/auth/me'),
 };
-
