@@ -1,0 +1,17 @@
+node_modules/
+client/node_modules/
+server/node_modules/
+.env
+.env.*
+!.env.example
+dist/
+client/dist/
+server/dist/
+.DS_Store
+Thumbs.db
+
+server/data/users.json
+server/data/orders.json
+
+server/data/users.backup.json
+server/data/orders.backup.json

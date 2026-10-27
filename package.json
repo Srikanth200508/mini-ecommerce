@@ -1,0 +1,13 @@
+{
+  "name": "mini-ecommerce-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Mini E-Commerce Application with React, Vite, Node.js and Express",
+  "scripts": {
+    "dev": "node run-all.js",
+    "start": "node run-all.js",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "build:client": "npm run build --prefix client"
+  }
+}

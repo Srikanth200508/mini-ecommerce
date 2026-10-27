@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "name": "Aura Noise-Cancelling Headphones",
+    "price": 199.99,
+    "category": "Audio",
+    "rating": 4.8,
+    "reviewsCount": 124,
+    "stock": 14,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+    "description": "Premium wireless over-ear headphones with active noise cancellation, 40-hour battery life, and crystal-clear acoustic fidelity."
+  },
+  {
+    "id": 2,
+    "name": "Pulse Pro Smartwatch",
+    "price": 149.50,
+    "category": "Wearables",
+    "rating": 4.7,
+    "reviewsCount": 89,
+    "stock": 20,
+    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+    "description": "Advanced health tracking smartwatch featuring AMOLED display, heart rate & SpO2 sensors, GPS, and water resistance up to 50m."
+  },
+  {
+    "id": 3,
+    "name": "Minimalist Mechanical Keyboard",
+    "price": 119.00,
+    "category": "Electronics",
+    "rating": 4.9,
+    "reviewsCount": 210,
+    "stock": 8,
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80",
+    "description": "Tenkeyless mechanical keyboard with hot-swappable tactile switches, frosted RGB backlighting, and durable PBT keycaps."
+  },
+  {
+    "id": 4,
+    "name": "Urban Travel Backpack",
+    "price": 79.99,
+    "category": "Accessories",
+    "rating": 4.6,
+    "reviewsCount": 76,
+    "stock": 25,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80",
+    "description": "Weather-resistant 25L commuter backpack with dedicated padded laptop compartment, anti-theft pockets, and ergonomic airflow straps."
+  },
+  {
+    "id": 5,
+    "name": "Studio Sound Bluetooth Speaker",
+    "price": 89.95,
+    "category": "Audio",
+    "rating": 4.5,
+    "reviewsCount": 63,
+    "stock": 18,
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=800&q=80",
+    "description": "Portable 360-degree immersive speaker featuring deep bass radiators, IPX7 waterproof rating, and 24 hours of non-stop playback."
+  },
+  {
+    "id": 6,
+    "name": "Ultra-Precision Ergonomic Mouse",
+    "price": 64.99,
+    "category": "Electronics",
+    "rating": 4.8,
+    "reviewsCount": 142,
+    "stock": 12,
+    "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=800&q=80",
+    "description": "Wireless ergonomic mouse engineered to reduce wrist strain, featuring a precision 4000 DPI sensor and hyper-fast scroll wheel."
+  },
+  {
+    "id": 7,
+    "name": "Titanium Polarized Sunglasses",
+    "price": 54.00,
+    "category": "Accessories",
+    "rating": 4.4,
+    "reviewsCount": 45,
+    "stock": 30,
+    "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80",
+    "description": "Classic unisex sunglasses with ultralight titanium frame and UV400 polarized scratch-resistant lenses for exceptional clarity."
+  },
+  {
+    "id": 8,
+    "name": "Smart Ambient Desk Lamp",
+    "price": 45.90,
+    "category": "Lifestyle",
+    "rating": 4.7,
+    "reviewsCount": 98,
+    "stock": 15,
+    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+    "description": "Dimmable LED desk lamp with adjustable color temperature, touch slide control, integrated wireless charging pad, and auto-timer."
+  }
+]
+
